@@ -1,0 +1,20 @@
+.sliderContainer {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.sliderWrapper {
+  display: flex;
+}
+
+.slide {
+  flex-shrink: 0;
+  text-align: center;
+  padding: 10px;
+}
+
+.slide img {
+  width: 100%;
+  border-radius: 20px;
+}

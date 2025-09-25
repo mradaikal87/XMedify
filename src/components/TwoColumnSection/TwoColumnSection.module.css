@@ -1,0 +1,115 @@
+.section {
+  padding: 60px 20px 0;
+  background: #f9fbff;
+}
+
+.twoContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 89px;
+}
+
+.contentColumn {
+  position: relative;
+}
+
+.title {
+  color: #222;
+  width: 70%;
+  margin: 0;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 67px;
+  letter-spacing: 0%;
+}
+
+.inputGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.countryCode {
+  padding: 10px 12px;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.arrowImage img {
+  height: 18%;
+  position: absolute;
+  top: 21%;
+  left: -45px;
+  width: fit-content;
+}
+
+.highlight {
+  color: #007bff;
+}
+
+.description {
+  font-size: 1rem;
+  color: #555;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.button {
+  padding: 12px 20px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #0056b3;
+}
+
+.stores {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.stores img {
+  height: 50px;
+}
+
+.imageColumn {
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 900px) {
+  .twoContainer {
+    display: block;
+  }
+}
+@media (max-width: 600px) {
+  .inputGroup,
+  .stores {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,134 @@
+.familiesSection {
+  padding: 100px 0px;
+  background: linear-gradient(
+    81deg,
+    #e7f0ff 9.01%,
+    rgba(232, 241, 255, 0.47) 89.11%
+  );
+}
+
+.familiescolumn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+
+  flex-wrap: wrap;
+}
+
+.left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.subheading {
+  color: #2aa7ff;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 18px;
+  letter-spacing: 0%;
+}
+
+.heading {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 67px;
+  letter-spacing: 0%;
+  color: #1b3c74;
+  margin: 0 0 15px;
+}
+
+.description {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 240%;
+  letter-spacing: 0%;
+  color: #77829d;
+  margin: 0;
+}
+
+.right {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  min-width: 300px;
+  gap: 38px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  height: 254px;
+  width: 192px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right .card:nth-child(1),
+.right .card:nth-child(3) {
+  position: relative;
+  bottom: 49px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.iconWrapper {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  font-size: 22px;
+}
+
+.blueBg {
+  background-color: #e6f4ff;
+  color: #007bff;
+}
+
+.redBg {
+  background-color: #ffeaea;
+  color: #ff4d4f;
+}
+
+.yellowBg {
+  background-color: #fff8e1;
+  color: #ff9800;
+}
+
+.greenBg {
+  background-color: #e9f9f0;
+  color: #2e7d32;
+}
+
+.value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #12263f;
+}
+
+.label {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+@media (max-width: 768px) {
+  .familiescolumn {
+    justify-content: center;
+  }
+}
+@media (max-width: 600px) {
+  .right {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

@@ -1,0 +1,88 @@
+.bookingContainer {
+  padding: 20px;
+  max-width: 80%;
+  margin: 0 0 auto;
+}
+.bookingSection{
+  padding-top: 80px;
+}
+.heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.bookingsList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.bookingCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.bookingCardWrapper {
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+}
+.location {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 19.6px;
+  letter-spacing: 0%;
+  color: #414146;
+
+}
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  justify-content: space-between;
+  width: 100%;
+}
+.address {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19.6px;
+  letter-spacing: 0%;
+  color: #414146;
+}
+.dateColumn {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+.date,
+.time {
+  border: 1px solid #2aa7ff;
+  padding: 7px 11px;
+  border-radius: 3px;
+  color: #2aa7ff;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19.6px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+.time {
+  border-color: #00a500 !important;
+  color: #00a500 !important;
+  font-weight: 700 !important;
+}
+.hospitalName {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  color: #2aa7ff;
+}
+.noBookings {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 50px;
+  color: #777;
+}

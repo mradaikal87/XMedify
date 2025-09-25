@@ -1,0 +1,124 @@
+.slotContainer {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* Day selector wrapper with arrows */
+.daySelectorWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.arrowBtn {
+  background: #f0f0f0;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 50%;
+}
+
+.arrowBtn:hover {
+  background: #e6e6e6;
+}
+
+.daySelector {
+  display: flex;
+  flex: 1;
+  justify-content: space-evenly;
+}
+
+.dayTab {
+  flex: 1;
+  text-align: center;
+  padding: 8px 4px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.dayTab:hover {
+  background: #f8f8f8;
+}
+
+.active .dayLabel {
+  color: #007bff;
+}
+
+.dayLabel {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22.4px;
+  letter-spacing: 0%;
+  text-align: center;
+  text-transform: capitalize;
+  color: #414146;
+}
+
+.slotsCount {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16.8px;
+  letter-spacing: 0%;
+  text-align: center;
+  text-transform: capitalize;
+  color: #01a400;
+}
+
+.bottomLine {
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  width: 60%;
+  height: 2px;
+  background-color: #007bff;
+  border-radius: 2px;
+}
+
+.slotsGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.timeRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.timeOfDay {
+  width: 80px;
+  font-weight: bold;
+}
+
+.timeButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.slotBtn {
+  padding: 6px 12px;
+  border: 1px solid #007bff;
+  background: white;
+  color: #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.slotBtn:hover {
+  background: #e6f0ff;
+}
+
+.selected {
+  background: #007bff;
+  color: white;
+}
