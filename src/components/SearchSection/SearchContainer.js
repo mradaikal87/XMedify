@@ -17,7 +17,7 @@ export default function SearchContainer(props) {
   const [results, setResults] = useState([]);
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
-  const [openSlotIndex, setOpenSlotIndex] = useState(null); // which hospital’s slots are open
+  const [openSlotIndex, setOpenSlotIndex] = useState(null); 
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -70,7 +70,6 @@ export default function SearchContainer(props) {
       style={{
         background: props?.data?.background || "",
         paddingTop: props?.paddingTop || "",
-        // display: props?.title ? "block" : "flex",
       }}
     >
       {/* Search Section */}
@@ -113,7 +112,6 @@ export default function SearchContainer(props) {
         </div>
       )}
 
-      {/* Results Section */}
       <div
         className="container"
         style={{ width: props?.data?.search ? "100%" : "auto" }}
@@ -122,7 +120,8 @@ export default function SearchContainer(props) {
           <div className={styles.results}>
             <div className={styles.heading}>
               <h1>
-                {results.length} medical centers available in {city}
+                {results.length} medical centers available in{" "}
+                {city.toUpperCase()}
               </h1>
               <p>
                 Book appointments with minimum wait-time & verified doctor
@@ -150,7 +149,7 @@ export default function SearchContainer(props) {
                           {hospital["Hospital Name"]}
                         </h3>
                         <p className={styles.location}>
-                          {hospital.City}, {hospital.State}
+                          {hospital.City.toUpperCase()}, {hospital.State}
                         </p>
                         <p className={styles.address}>{hospital.Address}</p>
                         <p className={styles.fee}>
@@ -180,7 +179,7 @@ export default function SearchContainer(props) {
                           city={hospital.City}
                           state={hospital.State}
                           Ownership={hospital["Hospital Ownership"]}
-                          onSlotSelect={handleSlotClick} // you can pass this to SlotContainer if needed
+                          onSlotSelect={handleSlotClick}
                         />
                       </div>
                     )}

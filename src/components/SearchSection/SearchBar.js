@@ -32,43 +32,41 @@ export default function SearchBar({ onSearch }) {
   const handleSearch = () => {
     onSearch(state, city);
     navigate(`/search?state=${state}&city=${city}`);
-
   };
 
   return (
     <div className={styles.searchBar}>
-      {/* State Dropdown */}
-      <select
-        className={styles.inputWrapper}
-        id="state"
-        value={state}
-        onChange={(e) => setState(e.target.value)}
-      >
-        <option value="">Select State</option>
-        {states.map((s, idx) => (
-          <option key={idx} value={s}>
-            {s}
-          </option>
-        ))}
-      </select>
+      <div id="state" className={styles.select}>
+        <select
+          className={styles.inputWrapper}
+          value={state}
+          onChange={(e) => setState(e.target.value)}
+        >
+          <option value="">Select State</option>
+          {states.map((s, idx) => (
+            <option key={idx} value={s}>
+              {s}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      {/* City Dropdown */}
-      <select
-        className={styles.inputWrapper}
-        id="city"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-        disabled={!state}
-      >
-        <option value="">Select City</option>
-        {cities.map((c, idx) => (
-          <option key={idx} value={c}>
-            {c}
-          </option>
-        ))}
-      </select>
+      <div id="city" className={styles.select}>
+        <select
+          className={styles.inputWrapper}
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          disabled={!state}
+        >
+          <option value="">Select City</option>
+          {cities.map((c, idx) => (
+            <option key={idx} value={c}>
+              {c}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      {/* Search Button */}
       <button id="searchBtn" onClick={handleSearch}>
         Search
       </button>

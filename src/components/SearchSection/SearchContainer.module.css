@@ -17,6 +17,10 @@
   width: 90%;
   top: 50px;
 }
+
+.select {
+  width: 100%;
+}
 .searchWrapper {
   justify-content: center;
   position: relative;
@@ -41,8 +45,9 @@
 .results {
   margin-top: 20px;
   text-align: left;
+  position: relative;
+  top: 85px;
 }
-
 .results ul {
   list-style: none;
   padding: 0;
@@ -113,6 +118,7 @@
   width: 100%;
   padding: 4px 8px;
   border: 1px solid #abb6c7;
+  min-height: 42px;
 }
 
 .actions {
