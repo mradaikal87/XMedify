@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./SlotContainer.module.css";
 
-const SlotContainer = ({ hospitalName, Ownership, city, state }) => {
+const SlotContainer = ({ hospitalName, Ownership, city, state, onSlotSelect }) => {
   const [selectedDay, setSelectedDay] = useState("today");
   const [selectedSlot, setSelectedSlot] = useState("");
   const navigate = useNavigate();
@@ -20,18 +20,8 @@ const SlotContainer = ({ hospitalName, Ownership, city, state }) => {
 
   const days = [
     { id: "today", label: "Today", date: formatDate(today), slots: 11 },
-    {
-      id: "tomorrow",
-      label: "Tomorrow",
-      date: formatDate(tomorrow),
-      slots: 17,
-    },
-    {
-      id: "dayAfter",
-      label: "Day After",
-      date: formatDate(dayAfter),
-      slots: 18,
-    },
+    { id: "tomorrow", label: "Tomorrow", date: formatDate(tomorrow), slots: 17 },
+    { id: "dayAfter", label: "Day After", date: formatDate(dayAfter), slots: 18 },
   ];
 
   const timeSlots = {
@@ -53,23 +43,10 @@ const SlotContainer = ({ hospitalName, Ownership, city, state }) => {
   const handleSlotClick = (slot) => {
     setSelectedSlot(slot);
 
-    const currentDay = days.find((d) => d.id === selectedDay);
+    if (onSlotSelect && hospitalName) {
+      onSlotSelect(hospitalName, slot);
+    }
 
-    // save booking in localStorage under 'bookings'
-    const existing = JSON.parse(localStorage.getItem("bookings") || "[]");
-    const newBooking = {
-      hospital: hospitalName || "",
-      day: currentDay?.label || "", // Today / Tomorrow / Day After
-      date: currentDay?.date || "", // 20 September 2025 etc
-      time: slot || "",
-
-      address: Ownership || "",
-      city: city || "",
-      state: state || "",
-    };
-    localStorage.setItem("bookings", JSON.stringify([...existing, newBooking]));
-
-    // redirect after booking
     navigate("/my-bookings");
   };
 
@@ -90,13 +67,9 @@ const SlotContainer = ({ hospitalName, Ownership, city, state }) => {
             >
               {day.label === "Today" || day.label === "Tomorrow" ? (
                 <p className={styles.dayLabel}>{day.label}</p>
-              ) : (
-                ""
-              )}
+              ) : null}
               <p className={styles.dayLabel}>{day.date}</p>
-              <div className={styles.slotsCount}>
-                {day.slots} Slots Available
-              </div>
+              <div className={styles.slotsCount}>{day.slots} Slots Available</div>
               {selectedDay === day.id && <div className={styles.bottomLine} />}
             </div>
           ))}

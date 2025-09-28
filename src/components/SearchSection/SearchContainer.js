@@ -47,22 +47,32 @@ export default function SearchContainer(props) {
     navigate(`/search?state=${selectedState}&city=${selectedCity}`);
   };
 
-  // store booking to localStorage
   const handleSlotClick = (hospitalName, slotTime) => {
     const currentBookings = JSON.parse(
       localStorage.getItem("bookings") || "[]"
     );
+
+    const hospital = results.find((h) => h["Hospital Name"] === hospitalName);
+    if (!hospital) return;
+
     const newBooking = {
-      hospital: hospitalName,
-      time: slotTime,
-      date: new Date().toISOString(),
+      "Hospital Name": hospital["Hospital Name"],
+      City: hospital.City,
+      State: hospital.State,
+      "Hospital Type": hospital["Hospital Type"],
+      "Hospital Ownership": hospital["Hospital Ownership"],
+      bookingDate: new Date().toLocaleDateString("en-GB"),
+      bookingTime: slotTime,
     };
+
     localStorage.setItem(
       "bookings",
       JSON.stringify([...currentBookings, newBooking])
     );
     alert(`Booked ${hospitalName} at ${slotTime}`);
   };
+
+  console.log("results:", results);
   return (
     <div
       className={`${styles.searchWrapper} ${props.Class || ""}`}
@@ -130,60 +140,65 @@ export default function SearchContainer(props) {
 
             <div className={styles.resultSection}>
               <ul className={styles.hospitalList}>
-                {results.map((hospital, idx) => (
-                  <li key={idx} className={styles.cardColumn}>
-                    <div className={styles.card}>
-                      {/* Left Side: Icon */}
-                      <div className={styles.iconWrapper}>
-                        <img
-                          src="/hospital.png"
-                          alt="Hospital"
-                          className={styles.icon}
-                        />
+                {results.map((hospital, idx) => {
+                  console.log("hospital:", hospital);
+                  return (
+                    <li key={idx} className={styles.cardColumn}>
+                      <div className={styles.card}>
+                        {/* Left Side: Icon */}
+                        <div className={styles.iconWrapper}>
+                          <img
+                            src="/hospital.png"
+                            alt="Hospital"
+                            className={styles.icon}
+                          />
+                        </div>
+
+                        {/* Middle Content */}
+                        <div className={styles.details}>
+                          <h3 className={styles.name}>
+                            {hospital["Hospital Name"]}
+                          </h3>
+                          <p className={styles.location}>
+                            {hospital.City.toUpperCase()}, {hospital.State}
+                          </p>
+                          <p className={styles.address}>{hospital.Address}</p>
+                          <p className={styles.fee}>
+                            <span className={styles.free}>FREE</span>{" "}
+                            <s>₹500</s> Consultation fee at clinic
+                          </p>
+                        </div>
+
+                        {/* Right Side */}
+                        <div className={styles.actions}>
+                          <p className={styles.available}>Available Today</p>
+                          <button
+                            className={styles.bookBtn}
+                            onClick={() =>
+                              setOpenSlotIndex(
+                                openSlotIndex === idx ? null : idx
+                              )
+                            }
+                          >
+                            Book FREE Center Visit
+                          </button>
+                        </div>
                       </div>
 
-                      {/* Middle Content */}
-                      <div className={styles.details}>
-                        <h3 className={styles.name}>
-                          {hospital["Hospital Name"]}
-                        </h3>
-                        <p className={styles.location}>
-                          {hospital.City.toUpperCase()}, {hospital.State}
-                        </p>
-                        <p className={styles.address}>{hospital.Address}</p>
-                        <p className={styles.fee}>
-                          <span className={styles.free}>FREE</span> <s>₹500</s>{" "}
-                          Consultation fee at clinic
-                        </p>
-                      </div>
-
-                      {/* Right Side */}
-                      <div className={styles.actions}>
-                        <p className={styles.available}>Available Today</p>
-                        <button
-                          className={styles.bookBtn}
-                          onClick={() =>
-                            setOpenSlotIndex(openSlotIndex === idx ? null : idx)
-                          }
-                        >
-                          Book FREE Center Visit
-                        </button>
-                      </div>
-                    </div>
-
-                    {openSlotIndex === idx && (
-                      <div className={styles.slotsContainer}>
-                        <SlotContainer
-                          hospitalName={hospital["Hospital Name"]}
-                          city={hospital.City}
-                          state={hospital.State}
-                          Ownership={hospital["Hospital Ownership"]}
-                          onSlotSelect={handleSlotClick}
-                        />
-                      </div>
-                    )}
-                  </li>
-                ))}
+                      {openSlotIndex === idx && (
+                        <div className={styles.slotsContainer}>
+                          <SlotContainer
+                            hospitalName={hospital["Hospital Name"]}
+                            city={hospital.City}
+                            state={hospital.State}
+                            Ownership={hospital["Hospital Ownership"]}
+                            onSlotSelect={handleSlotClick}
+                          />
+                        </div>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
 
               <div className={styles.rigthColumn}>
