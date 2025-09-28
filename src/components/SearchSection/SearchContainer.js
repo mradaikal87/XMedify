@@ -133,7 +133,7 @@ export default function SearchContainer(props) {
             <div className={styles.heading}>
               <h1>
                 {results.length} medical centers available in{" "}
-                {capitalizeFirstLetter(city)}
+               {city.toLowerCase()}
               </h1>
               <p>
                 Book appointments with minimum wait-time & verified doctor
