@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./SlotContainer.module.css";
 
-const SlotContainer = ({ hospitalName, Ownership, city, state, onSlotSelect }) => {
+const SlotContainer = ({
+  hospitalName,
+  Ownership,
+  city,
+  state,
+  onSlotSelect,
+}) => {
   const [selectedDay, setSelectedDay] = useState("today");
   const [selectedSlot, setSelectedSlot] = useState("");
   const navigate = useNavigate();
@@ -20,8 +26,18 @@ const SlotContainer = ({ hospitalName, Ownership, city, state, onSlotSelect }) =
 
   const days = [
     { id: "today", label: "Today", date: formatDate(today), slots: 11 },
-    { id: "tomorrow", label: "Tomorrow", date: formatDate(tomorrow), slots: 17 },
-    { id: "dayAfter", label: "Day After", date: formatDate(dayAfter), slots: 18 },
+    {
+      id: "tomorrow",
+      label: "Tomorrow",
+      date: formatDate(tomorrow),
+      slots: 17,
+    },
+    {
+      id: "dayAfter",
+      label: "Day After",
+      date: formatDate(dayAfter),
+      slots: 18,
+    },
   ];
 
   const timeSlots = {
@@ -43,8 +59,10 @@ const SlotContainer = ({ hospitalName, Ownership, city, state, onSlotSelect }) =
   const handleSlotClick = (slot) => {
     setSelectedSlot(slot);
 
+    const selectedDayObj = days.find((d) => d.id === selectedDay);
+
     if (onSlotSelect && hospitalName) {
-      onSlotSelect(hospitalName, slot);
+      onSlotSelect(hospitalName, slot, selectedDayObj.date);
     }
 
     navigate("/my-bookings");
@@ -69,7 +87,9 @@ const SlotContainer = ({ hospitalName, Ownership, city, state, onSlotSelect }) =
                 <p className={styles.dayLabel}>{day.label}</p>
               ) : null}
               <p className={styles.dayLabel}>{day.date}</p>
-              <div className={styles.slotsCount}>{day.slots} Slots Available</div>
+              <div className={styles.slotsCount}>
+                {day.slots} Slots Available
+              </div>
               {selectedDay === day.id && <div className={styles.bottomLine} />}
             </div>
           ))}

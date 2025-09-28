@@ -47,7 +47,7 @@ export default function SearchContainer(props) {
     navigate(`/search?state=${selectedState}&city=${selectedCity}`);
   };
 
-  const handleSlotClick = (hospitalName, slotTime) => {
+  const handleSlotClick = (hospitalName, slotTime, bookingDate) => {
     const currentBookings = JSON.parse(
       localStorage.getItem("bookings") || "[]"
     );
@@ -61,7 +61,7 @@ export default function SearchContainer(props) {
       State: hospital.State,
       "Hospital Type": hospital["Hospital Type"],
       "Hospital Ownership": hospital["Hospital Ownership"],
-      bookingDate: new Date().toLocaleDateString("en-GB"),
+      bookingDate, 
       bookingTime: slotTime,
     };
 
@@ -69,7 +69,7 @@ export default function SearchContainer(props) {
       "bookings",
       JSON.stringify([...currentBookings, newBooking])
     );
-    alert(`Booked ${hospitalName} at ${slotTime}`);
+    alert(`Booked ${hospitalName} at ${slotTime} on ${bookingDate}`);
   };
 
   const capitalizeFirstLetter = (str) => {
@@ -85,7 +85,6 @@ export default function SearchContainer(props) {
         paddingTop: props?.paddingTop || "",
       }}
     >
-      {/* Search Section */}
       {props?.title && !props?.state ? (
         <div className={styles.myBooking}>
           <div
@@ -145,7 +144,6 @@ export default function SearchContainer(props) {
             <div className={styles.resultSection}>
               <ul className={styles.hospitalList}>
                 {results.map((hospital, idx) => {
-                  console.log("hospital:", hospital);
                   return (
                     <li key={idx} className={styles.cardColumn}>
                       <div className={styles.card}>
