@@ -72,7 +72,11 @@ export default function SearchContainer(props) {
     alert(`Booked ${hospitalName} at ${slotTime}`);
   };
 
-  console.log("results:", results);
+  const capitalizeFirstLetter = (str) => {
+    if (!str) return "";
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  };
+
   return (
     <div
       className={`${styles.searchWrapper} ${props.Class || ""}`}
@@ -130,7 +134,7 @@ export default function SearchContainer(props) {
             <div className={styles.heading}>
               <h1>
                 {results.length} medical centers available in{" "}
-                {city.toUpperCase()}
+                {capitalizeFirstLetter(city)}
               </h1>
               <p>
                 Book appointments with minimum wait-time & verified doctor

@@ -12,7 +12,6 @@ const BookingContainer = () => {
   if (bookings.length === 0) {
     return <p className={styles.noBookings}>No bookings found.</p>;
   }
-  console.log(bookings);
   return (
     <div className={styles.bookingSection}>
       <div className="container">
