@@ -46,7 +46,7 @@ export default function BannerSection({ data }) {
             />
           </div>
         </div>
-        <SearchContainer />
+        <SearchContainer Class="search-Banner"/>
       </div>
     </section>
   );

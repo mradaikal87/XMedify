@@ -17,7 +17,7 @@ export default function SearchContainer(props) {
   const [results, setResults] = useState([]);
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
-  const [openSlotIndex, setOpenSlotIndex] = useState(null); 
+  const [openSlotIndex, setOpenSlotIndex] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -63,10 +63,9 @@ export default function SearchContainer(props) {
     );
     alert(`Booked ${hospitalName} at ${slotTime}`);
   };
-
   return (
     <div
-      className={styles.searchWrapper}
+      className={`${styles.searchWrapper} ${props.Class || ""}`}
       style={{
         background: props?.data?.background || "",
         paddingTop: props?.paddingTop || "",

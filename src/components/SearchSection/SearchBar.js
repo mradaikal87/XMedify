@@ -7,6 +7,11 @@ export default function SearchBar({ onSearch }) {
   const [city, setCity] = useState("");
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
+
+  // for dropdown open/close
+  const [showStates, setShowStates] = useState(false);
+  const [showCities, setShowCities] = useState(false);
+
   const navigate = useNavigate();
 
   // Load states list
@@ -26,6 +31,7 @@ export default function SearchBar({ onSearch }) {
         .catch((err) => console.error("Error fetching cities:", err));
     } else {
       setCities([]);
+      setCity("");
     }
   }, [state]);
 
@@ -36,35 +42,56 @@ export default function SearchBar({ onSearch }) {
 
   return (
     <div className={styles.searchBar}>
+      {/* STATE */}
       <div id="state" className={styles.select}>
-        <select
-          className={styles.inputWrapper}
-          value={state}
-          onChange={(e) => setState(e.target.value)}
+        <div
+          className={`${styles.dropdownHeader}  ${styles.inputWrapper}`}
+          onClick={() => setShowStates((prev) => !prev)}
         >
-          <option value="">Select State</option>
-          {states.map((s, idx) => (
-            <option key={idx} value={s}>
-              {s}
-            </option>
-          ))}
-        </select>
+          {state || "Select State"}
+        </div>
+        {showStates && (
+          <ul className={styles.dropdownList}>
+            {states.map((s, idx) => (
+              <li
+                key={idx}
+                onClick={() => {
+                  setState(s);
+                  setShowStates(false);
+                }}
+              >
+                {s}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
+      {/* CITY */}
       <div id="city" className={styles.select}>
-        <select
-          className={styles.inputWrapper}
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          disabled={!state}
+        <div
+          className={`${styles.dropdownHeader} ${
+            !state ? styles.disabled : ""
+          }  ${styles.inputWrapper}`}
+          onClick={() => state && setShowCities((prev) => !prev)}
         >
-          <option value="">Select City</option>
-          {cities.map((c, idx) => (
-            <option key={idx} value={c}>
-              {c}
-            </option>
-          ))}
-        </select>
+          {city || "Select City"}
+        </div>
+        {showCities && (
+          <ul className={styles.dropdownList}>
+            {cities.map((c, idx) => (
+              <li
+                key={idx}
+                onClick={() => {
+                  setCity(c);
+                  setShowCities(false);
+                }}
+              >
+                {c}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       <button id="searchBtn" onClick={handleSearch}>
