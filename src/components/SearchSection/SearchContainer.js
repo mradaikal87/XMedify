@@ -79,7 +79,7 @@ export default function SearchContainer(props) {
             style={{ width: props?.data?.search ? "100%" : "auto" }}
           >
             <div className={styles.bookingheader}>
-              <h3 className={styles.title}>{props?.title}</h3>
+              <h1 className={styles.title}>{props?.title}</h1>
               <SearchHospital onSearch={handleSearch} />
             </div>
           </div>

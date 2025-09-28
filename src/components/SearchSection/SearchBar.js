@@ -8,13 +8,11 @@ export default function SearchBar({ onSearch }) {
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
 
-  // for dropdown open/close
   const [showStates, setShowStates] = useState(false);
   const [showCities, setShowCities] = useState(false);
 
   const navigate = useNavigate();
 
-  // Load states list
   useEffect(() => {
     fetch("https://meddata-backend.onrender.com/states")
       .then((res) => res.json())
@@ -22,7 +20,6 @@ export default function SearchBar({ onSearch }) {
       .catch((err) => console.error("Error fetching states:", err));
   }, []);
 
-  // Load cities when state changes
   useEffect(() => {
     if (state) {
       fetch(`https://meddata-backend.onrender.com/cities/${state}`)
@@ -36,7 +33,7 @@ export default function SearchBar({ onSearch }) {
   }, [state]);
 
   const handleSearch = () => {
-    onSearch(state, city);
+    onSearch(state, city.toUpperCase());
     navigate(`/search?state=${state}&city=${city}`);
   };
 
