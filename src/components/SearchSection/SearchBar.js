@@ -37,6 +37,10 @@ export default function SearchBar({ onSearch }) {
     navigate(`/search?state=${state}&city=${city}`);
   };
 
+  function capitalizeFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+
   return (
     <div className={styles.searchBar}>
       {/* STATE */}
@@ -57,7 +61,7 @@ export default function SearchBar({ onSearch }) {
                   setShowStates(false);
                 }}
               >
-                {s.toUpperCase()}
+                {capitalizeFirstLetter(s)}
               </li>
             ))}
           </ul>
