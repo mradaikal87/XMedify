@@ -33,6 +33,7 @@ export default function SearchBar({ onSearch }) {
   }, [state]);
 
   const handleSearch = () => {
+    if (!state || !city) return;
     onSearch(state, city.toUpperCase());
     navigate(`/search?state=${state}&city=${city}`);
   };
@@ -95,7 +96,12 @@ export default function SearchBar({ onSearch }) {
         )}
       </div>
 
-      <button id="searchBtn" onClick={handleSearch}>
+      <button
+        id="searchBtn"
+        onClick={handleSearch}
+        disabled={!state || !city}
+        className={!state || !city ? styles.disabledBtn : ""}
+      >
         Search
       </button>
     </div>
