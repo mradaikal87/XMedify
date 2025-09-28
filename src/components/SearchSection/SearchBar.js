@@ -57,7 +57,7 @@ export default function SearchBar({ onSearch }) {
                   setShowStates(false);
                 }}
               >
-                {s}
+                {s.toUpperCase()}
               </li>
             ))}
           </ul>
@@ -84,7 +84,7 @@ export default function SearchBar({ onSearch }) {
                   setShowCities(false);
                 }}
               >
-                {c}
+                {c.toUpperCase()}
               </li>
             ))}
           </ul>
