@@ -32,17 +32,17 @@ const BookingContainer = () => {
                   <div>
                     <div className={styles.header}>
                       <div>
-                        <h3 className={styles.hospitalName}>{b.hospital}</h3>
+                        <h3 className={styles.hospitalName}>{b["Hospital Name"]}</h3>
                         <div>
                           <p className={styles.location}>
-                            {b.city}, {b.state}
+                            {b.City}, {b.State}
                           </p>
-                          <p className={styles.address}>{b.address}</p>
+                          <p className={styles.address}>{b["Hospital Ownership"]}</p>
                         </div>
                       </div>
                       <div className={styles.dateColumn}>
-                        <p className={styles.date}>{b.date}</p>
-                        <p className={styles.time}>{b.time}</p>
+                        <p className={styles.date}>{b.bookingDate}</p>
+                        <p className={styles.time}>{b.bookingTime}</p>
                       </div>
                     </div>
                   </div>
